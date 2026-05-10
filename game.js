@@ -479,29 +479,33 @@ class Game {
     }
 
     createOrangeCat() {
-        const orangeCatGroup = new THREE.Group();
-        const orangeMat = new THREE.MeshStandardMaterial({ color: 0xff9800 });
+        const catGroup = new THREE.Group();
+        const blueMat = new THREE.MeshStandardMaterial({ color: 0x2196f3 }); // Vivid Blue
+        const darkBlueMat = new THREE.MeshStandardMaterial({ color: 0x1976d2 });
         const whiteMat = new THREE.MeshStandardMaterial({ color: 0xffffff });
         const blackMat = new THREE.MeshStandardMaterial({ color: 0x212121 });
+        const pinkMat = new THREE.MeshStandardMaterial({ color: 0xffc1e3 });
 
         // Body
-        const body = new THREE.Mesh(new THREE.BoxGeometry(1.2, 1, 2.5), orangeMat);
+        const body = new THREE.Mesh(new THREE.BoxGeometry(1.2, 1, 2.5), blueMat);
         body.position.y = 1;
-        orangeCatGroup.add(body);
+        body.castShadow = true;
+        catGroup.add(body);
 
         // Head
-        const head = new THREE.Mesh(new THREE.BoxGeometry(1.2, 1.2, 1.2), orangeMat);
+        const head = new THREE.Mesh(new THREE.BoxGeometry(1.2, 1.2, 1.2), blueMat);
         head.position.set(0, 1.8, 1.2);
-        orangeCatGroup.add(head);
+        head.castShadow = true;
+        catGroup.add(head);
 
         // Ears
         const earGeom = new THREE.ConeGeometry(0.3, 0.6, 4);
-        const earL = new THREE.Mesh(earGeom, orangeMat);
+        const earL = new THREE.Mesh(earGeom, blueMat);
         earL.position.set(-0.4, 2.6, 1.2);
-        orangeCatGroup.add(earL);
-        const earR = new THREE.Mesh(earGeom, orangeMat);
+        catGroup.add(earL);
+        const earR = new THREE.Mesh(earGeom, blueMat);
         earR.position.set(0.4, 2.6, 1.2);
-        orangeCatGroup.add(earR);
+        catGroup.add(earR);
 
         // Eyes
         const eyeGeom = new THREE.SphereGeometry(0.15, 8, 8);
@@ -689,14 +693,14 @@ class Game {
         const catGroup = new THREE.Group();
 
         // Materials
-        const greyBody = new THREE.MeshStandardMaterial({ color: 0x9e9e9e }); // Lighter grey
-        const darkGrey = new THREE.MeshStandardMaterial({ color: 0x616161 });
+        const blueBody = new THREE.MeshStandardMaterial({ color: 0x2196f3 }); // Vivid Blue
+        const darkBlue = new THREE.MeshStandardMaterial({ color: 0x1976d2 });
         const pink = new THREE.MeshStandardMaterial({ color: 0xf48fb1 });
         const white = new THREE.MeshStandardMaterial({ color: 0xffffff });
         const black = new THREE.MeshStandardMaterial({ color: 0x212121 });
 
         // Body
-        const body = new THREE.Mesh(new THREE.BoxGeometry(0.7, 0.6, 1.1), greyBody);
+        const body = new THREE.Mesh(new THREE.BoxGeometry(0.7, 0.6, 1.1), blueBody);
         body.position.y = 0.6;
         body.castShadow = true;
         catGroup.add(body);
@@ -707,18 +711,18 @@ class Game {
         catGroup.add(chest);
 
         // Head
-        const head = new THREE.Mesh(new THREE.BoxGeometry(0.65, 0.55, 0.55), greyBody);
+        const head = new THREE.Mesh(new THREE.BoxGeometry(0.65, 0.55, 0.55), blueBody);
         head.position.set(0, 0.95, 0.6);
         head.castShadow = true;
         catGroup.add(head);
 
         // Ears
         const earGeom = new THREE.ConeGeometry(0.15, 0.3, 4);
-        const earL = new THREE.Mesh(earGeom, darkGrey);
+        const earL = new THREE.Mesh(earGeom, darkBlue);
         earL.position.set(0.2, 1.3, 0.6);
         catGroup.add(earL);
 
-        const earR = new THREE.Mesh(earGeom, darkGrey);
+        const earR = new THREE.Mesh(earGeom, darkBlue);
         earR.position.set(-0.2, 1.3, 0.6);
         catGroup.add(earR);
 
@@ -748,7 +752,7 @@ class Game {
         ];
 
         legPositions.forEach(pos => {
-            const leg = new THREE.Mesh(legGeom, greyBody);
+            const leg = new THREE.Mesh(legGeom, blueBody);
             leg.position.set(pos.x, pos.y, pos.z);
             leg.castShadow = true;
             catGroup.add(leg);
@@ -757,7 +761,7 @@ class Game {
 
         // Tail
         const tailGeom = new THREE.BoxGeometry(0.12, 0.12, 0.7);
-        this.tail = new THREE.Mesh(tailGeom, darkGrey);
+        this.tail = new THREE.Mesh(tailGeom, darkBlue);
         this.tail.position.set(0, 0.75, -0.8);
         this.tail.rotation.x = -Math.PI / 6;
         catGroup.add(this.tail);
