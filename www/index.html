@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cat Adventure 3D</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="A beautiful 3D adventure game where you play as a grey cat exploring a vibrant world.">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="ui-container">
+        <div id="hud">
+            <h1>Cat Adventure</h1>
+            <p>WASD to Move</p>
+            <p>SPACE to Jump | R to Reset</p>
+            <button id="reset-btn" style="pointer-events: auto; margin-top: 10px; background: var(--accent-color); border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; font-weight: bold;">Reset Position</button>
+        </div>
+        
+        <div id="interaction-bubble" class="hidden">Food?</div>
+
+        <!-- Mobile Controls -->
+        <div id="mobile-controls">
+            <div id="joystick-base">
+                <div id="joystick-stick"></div>
+            </div>
+            <div id="action-buttons">
+                <button id="jump-btn" class="mobile-btn">JUMP</button>
+                <button id="interact-btn" class="mobile-btn">E</button>
+            </div>
+        </div>
+        <div id="loading-screen">
+            <div class="loader"></div>
+            <p>Summoning the Grey Cat...</p>
+        </div>
+    </div>
+    <canvas id="game-canvas"></canvas>
+
+    <!-- Three.js UMD -->
+    <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
+    <script src="game.js"></script>
+    <script>
+        // Safety net: hide loading screen if it's still visible after 5 seconds
+        setTimeout(() => {
+            const loader = document.getElementById('loading-screen');
+            if (loader && !loader.classList.contains('hidden')) {
+                loader.classList.add('hidden');
+                console.log('Loading screen hidden by safety net.');
+            }
+        }, 5000);
+    </script>
+</body>
+</html>
