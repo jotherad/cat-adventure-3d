@@ -1,6 +1,6 @@
 {
   "name": "cat-adventure-3d",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A 3D cat game",
   "main": "index.html",
   "scripts": {
