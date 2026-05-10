@@ -1,0 +1,14 @@
+{
+  "name": "cat-adventure-3d",
+  "version": "1.0.0",
+  "description": "A 3D cat game",
+  "main": "index.html",
+  "scripts": {
+    "start": "serve .",
+    "dev": "npx serve ."
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "serve": "^14.2.1"
+  }
+}
